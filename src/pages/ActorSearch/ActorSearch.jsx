@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import styles from './ActorSearch.module.css'
+import * as actorService from '../../services/actorService'
 
 const ActorSearch = (props) => {
 
   const [formData, setFormData] = useState({
     actorSearch: ''
   })
+
+  const [results, setResults] = useState([])
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -14,7 +17,8 @@ const ActorSearch = (props) => {
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-      // await 
+      const resultData = await actorService.search(formData)
+      setResults(resultData)
     } catch (err) {
       console.log(err)
     }
