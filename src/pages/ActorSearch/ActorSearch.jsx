@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './ActorSearch.module.css'
 import * as actorService from '../../services/actorService'
+import ActorResults from '../../components/ActorResults/ActorResults'
 
 const ActorSearch = (props) => {
 
@@ -44,9 +45,12 @@ const ActorSearch = (props) => {
         />
       </div>
       <div>
-        <button className={styles.button}>Search</button>
+        <button className="btn btn-primary">Search</button>
       </div>
     </form>
+
+      <ActorResults actors={results}/>
+    
     </>
   );
 }
