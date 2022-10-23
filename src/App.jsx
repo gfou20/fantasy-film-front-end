@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import ActorSearch from './pages/ActorSearch/ActorSearch'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -51,6 +52,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Profiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/actor-search"
+          element={
+            <ProtectedRoute user={user}>
+              <ActorSearch />
             </ProtectedRoute>
           }
         />
