@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import styles from './ActorSearch.module.css'
-import * as actorService from '../../services/actorService'
-import ActorResults from '../../components/ActorResults/ActorResults'
+import styles from './MovieSearch.module.css'
+import * as movieService from '../../services/movieService'
+import MovieResults from '../../components/MovieResults/MovieResults'
 
-const ActorSearch = () => {
+const MovieSearch = () => {
 
   const [formData, setFormData] = useState({
-    actorSearch: ''
+    movieSearch: ''
   })
 
   const [results, setResults] = useState([])
@@ -18,7 +18,7 @@ const ActorSearch = () => {
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-      const resultData = await actorService.search(formData)
+      const resultData = await movieService.search(formData)
       setResults(resultData)
     } catch (err) {
       console.log(err)
@@ -27,8 +27,8 @@ const ActorSearch = () => {
 
   return (  
     <>
-      <h1>Actor Search</h1>
-      <form
+    <h1>Movie Search</h1>
+    <form
       autoComplete="off"
       onSubmit={handleSubmit}
       className={styles.container}
@@ -37,10 +37,10 @@ const ActorSearch = () => {
         <input
           type="text"
           autoComplete="off"
-          placeholder='Search for an actor...'
-          id="actor-search"
-          value={formData.actorSearch}
-          name="actorSearch"
+          placeholder='Search for a movie...'
+          id="movie-search"
+          value={formData.movieSearch}
+          name="movieSearch"
           onChange={handleChange}
         />
       </div>
@@ -48,11 +48,9 @@ const ActorSearch = () => {
         <button className="btn btn-primary">Search</button>
       </div>
     </form>
-
-      <ActorResults actors={results}/>
-    
+      <MovieResults movies={results}/>
     </>
   );
 }
 
-export default ActorSearch;
+export default MovieSearch;
