@@ -17,7 +17,7 @@ const MovieResults = ({movies}) => {
                 <p className='card-text'>{movie.overview}</p>
                 <p>Cast:</p>
                   <ul>
-                    <Cast movieId={movie.id}/>
+                    <Cast key={movie.id} movieId={movie.id}/>
                   </ul>
               </div>
             </div>

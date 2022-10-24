@@ -14,16 +14,10 @@ const Cast = ({movieId}) => {
     
   }, [movieId])
   
-  // const fetchCreditDetails = async () => {
-  //   const resultsData = await movieService.credits(movieId)
-  //   setResults(resultsData)
-  // }
-  // fetchCreditDetails()
-  
   return (  
     <>
-    {credits.map( cast => 
-      <li key={cast._id}>{cast.character} played by {cast.name}</li>
+    {credits.map( (cast,idx) => 
+      {if(idx < 5) return <li key={cast.name}>{cast.character} played by {cast.name}</li>} 
     )}
     </>
   );
