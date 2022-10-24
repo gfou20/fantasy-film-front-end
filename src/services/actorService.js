@@ -15,3 +15,20 @@ export async function search(actorSearch) {
   })
   return res.json()
 }
+
+export async function create(actorData) {
+  try {
+    const res = await fetch(`${BASE_URL}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(actorData)
+    })
+    return res.json()
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
