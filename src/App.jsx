@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import ActorSearch from './pages/ActorSearch/ActorSearch'
 import MovieList from './pages/MovieList/MovieList'
 import MovieSearch from './pages/MovieSearch/MovieSearch'
+import DreamcastList from './pages/DreamcastList/DreamcastList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -70,6 +71,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <MovieList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dreamcasts"
+          element={
+            <ProtectedRoute user={user}>
+              <DreamcastList />
             </ProtectedRoute>
           }
         />
