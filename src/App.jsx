@@ -11,7 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import ActorSearch from './pages/ActorSearch/ActorSearch'
 import MovieList from './pages/MovieList/MovieList'
 import MovieSearch from './pages/MovieSearch/MovieSearch'
-import DreamcastList from './components/DreamcastList/DreamcastList'
+import DreamcastList from './pages/DreamcastList/DreamcastList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
