@@ -15,3 +15,19 @@ export async function search(movieSearch) {
   })
   return res.json()
 }
+
+export async function credits(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/credits/${movieId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return res.json()
+    
+  } catch (error) {
+    console.log(error);
+  }
+  
+}

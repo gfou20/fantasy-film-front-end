@@ -1,6 +1,8 @@
+import Cast from '../Cast/Cast';
 import styles from './MovieResults.module.css'
 
 const MovieResults = ({movies}) => {
+
   return ( 
     <main className={styles.container}>
       { movies.length ? 
@@ -13,6 +15,10 @@ const MovieResults = ({movies}) => {
               <div className='card-body'>
                 <h5 className='card-title'>{movie.original_title}</h5>
                 <p className='card-text'>{movie.overview}</p>
+                <p>Cast:</p>
+                  <ul>
+                    <Cast movieId={movie.id}/>
+                  </ul>
               </div>
             </div>
           )
