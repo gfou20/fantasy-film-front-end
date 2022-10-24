@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import ActorSearch from './pages/ActorSearch/ActorSearch'
+import MovieList from './pages/MovieList/MovieList'
 import MovieSearch from './pages/MovieSearch/MovieSearch'
 
 // components
@@ -61,6 +62,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <ActorSearch />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movie-list"
+          element={
+            <ProtectedRoute user={user}>
+              <MovieList />
             </ProtectedRoute>
           }
         />
