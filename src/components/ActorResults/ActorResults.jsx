@@ -1,7 +1,21 @@
+import * as actorService from '../../services/actorService'
+
 import styles from './ActorResults.module.css'
 
 const ActorResults = ({actors}) => {
-  
+
+  const handleOnClick = async actor => {
+    try {
+      const setFavActor={
+        name: `${actor.name}`,
+        photo: `https://image.tmdb.org/t/p/original${actor.profile_path}`
+      }
+      await actorService.create(setFavActor)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (  
     <main className={styles.container}>
     {actors.length ?
@@ -19,7 +33,10 @@ const ActorResults = ({actors}) => {
                       <li key={known.id}>{known.original_title ? known.original_title : known.name}</li>
                     ))}
                   </ul>
-                  <button className='btn btn-primary mt-auto'>Add to Favorite</button>
+                  <button 
+                    className='btn btn-primary mt-auto'
+                    onClick={()=> handleOnClick(actor)}
+                  >Add to Favorite</button>
                 </div>
               </div>
             )
