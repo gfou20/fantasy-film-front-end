@@ -19,6 +19,7 @@ const MovieResults = ({movies}) => {
                   <ul>
                     <Cast key={movie.id} movieId={movie.id}/>
                   </ul>
+                  
               </div>
             </div>
           )
@@ -30,4 +31,4 @@ const MovieResults = ({movies}) => {
   );
 }
 
-export default MovieResults;
+export default MovieResults
