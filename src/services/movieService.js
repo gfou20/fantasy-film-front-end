@@ -2,6 +2,37 @@ import * as tokenService from './tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/movies`
 
+
+
+export async function search(movieSearch) {
+  const res = await fetch(`${BASE_URL}/search`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(movieSearch)
+  })
+  return res.json()
+}
+
+export async function credits(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/credits/${movieId}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return res.json()
+    
+  } catch (error) {
+    console.log(error);
+  }
+  
+}
+
+
 const index = async () => {
   try {
     const res = await fetch(BASE_URL, {
@@ -26,5 +57,5 @@ const show = async (id) => {
 
 export {
   index,
-  show
+  show,
 }

@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import ActorSearch from './pages/ActorSearch/ActorSearch'
 import MovieList from './pages/MovieList/MovieList'
+import MovieSearch from './pages/MovieSearch/MovieSearch'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -69,6 +70,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <MovieList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movie-search"
+          element={
+            <ProtectedRoute user={user}>
+              <MovieSearch />
             </ProtectedRoute>
           }
         />
