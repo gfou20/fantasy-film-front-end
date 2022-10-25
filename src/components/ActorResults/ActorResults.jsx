@@ -8,7 +8,8 @@ const ActorResults = ({actors}) => {
     try {
       const setFavActor={
         name: `${actor.name}`,
-        photo: `https://image.tmdb.org/t/p/original${actor.profile_path}`
+        photo: `https://image.tmdb.org/t/p/original${actor.profile_path}`,
+        tmdbID: `${actor.id}`
       }
       await actorService.create(setFavActor)
     } catch (err) {
