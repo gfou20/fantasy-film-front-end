@@ -4,7 +4,10 @@ import * as actorService from '../../services/actorService'
 
 import styles from './ActorResults.module.css'
 
-const ActorResults = ({actors}) => {
+const ActorResults = ({actors, profile, setProfile}) => {
+  console.log(profile)
+  const tmdbIDs = profile?.favoriteActors.map(a => a.tmdbID) 
+  console.log(tmdbIDs)
 
   const handleAddToFav = async actor => {
     try {
@@ -13,7 +16,11 @@ const ActorResults = ({actors}) => {
         photo: `https://image.tmdb.org/t/p/original${actor.profile_path}`,
         tmdbID: `${actor.id}`
       }
-      await actorService.create(setFavActor)
+      const newActor = await actorService.create(setFavActor)
+      setProfile({
+        ...profile,
+        favoriteActors:[...profile.favoriteActors,newActor]
+      })
     } catch (err) {
       console.log(err)
     }
@@ -24,6 +31,12 @@ const ActorResults = ({actors}) => {
         tmdbID: `${actor.id}`
       }
       await actorService.deleteFav(deleteFavActor)
+      setProfile({
+        ...profile,
+        favoriteActors: profile.favoriteActors.filter(a => {
+          return a.tmdbID !== actor.id
+        })
+      })
     } catch (error) {
       console.log(error)
     }
@@ -37,7 +50,14 @@ const ActorResults = ({actors}) => {
         {
           if (actor.profile_path){
             return (
-              <ActorCard key={actor.id} actor={actor} handleDeleteFromFav={handleDeleteFromFav} handleAddToFav={handleAddToFav}/>
+              <ActorCard 
+                key={actor.id} 
+                actor={actor} 
+                profile={profile}
+                favActors={tmdbIDs}
+                handleDeleteFromFav={handleDeleteFromFav} 
+                handleAddToFav={handleAddToFav}
+              />
             )
           }
         }

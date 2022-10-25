@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react"
 import * as actorService from '../../services/actorService'
 
-const ActorCard = ({actor, handleAddToFav, handleDeleteFromFav}) => {
-
-  const [isFavoriteActor, setIsFavoriteActor] = useState(false)
+const ActorCard = ({actor, handleAddToFav, handleDeleteFromFav, favActors}) => {
+  console.log(actor)
+  const isFavoriteActor = favActors?.includes(actor.id)
+  console.log(favActors, "favorite actors")
   
-  useEffect(() => {
-    const fetchFavoriteDetails = async () => {
-      const actorData = {
-        tmdbID: `${actor.id}`
-      }
-      const resultData = await actorService.favorite(actorData)
-      setIsFavoriteActor(resultData)
-    }
-    
-    fetchFavoriteDetails()
-  }, [isFavoriteActor])
-
   return (  
     <div className='card' style={{'width' : '24rem'}} >
       <img src={`https://image.tmdb.org/t/p/original${actor.profile_path}`} alt={`${actor.name}`} />
