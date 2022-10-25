@@ -32,3 +32,36 @@ export async function create(actorData) {
     console.log(error);
   }
 }
+
+export async function favorite(actorData) {
+  try {
+    const res = await fetch(`${BASE_URL}/favorite`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(actorData)
+    })
+    return res.json()    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function deleteFav(actorData) {
+  try {
+    const res = await fetch(`${BASE_URL}/favorite`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(actorData)
+    })
+    return res.json()
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
