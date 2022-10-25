@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import styles from './MovieResults.module.css'
 
@@ -19,7 +20,6 @@ const MovieResults = ({movies}) => {
                   <ul>
                     <Cast key={movie.id} movieId={movie.id}/>
                   </ul>
-                  
               </div>
             </div>
           )
