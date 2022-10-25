@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 
 // page components
@@ -19,12 +19,14 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 // styles
 import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState(null)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -36,6 +38,15 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const data = await profileService.getOneProfile(user.profile)
+      setProfile(data)
+    }
+    if (user) fetchProfile()
+  }, [user])
+  console.log(profile);
 
   return (
     <>
@@ -62,7 +73,7 @@ const App = () => {
           path="/actor-search"
           element={
             <ProtectedRoute user={user}>
-              <ActorSearch />
+              <ActorSearch profile={profile} setProfile={setProfile}/>
             </ProtectedRoute>
           }
         />

@@ -3,7 +3,7 @@ import styles from './ActorSearch.module.css'
 import * as actorService from '../../services/actorService'
 import ActorResults from '../../components/ActorResults/ActorResults'
 
-const ActorSearch = () => {
+const ActorSearch = ({profile, setProfile}) => {
 
   const [formData, setFormData] = useState({
     actorSearch: ''
@@ -49,7 +49,7 @@ const ActorSearch = () => {
       </div>
     </form>
 
-      <ActorResults actors={results}/>
+      <ActorResults profile={profile} setProfile={setProfile} actors={results}/>
     
     </>
   );
