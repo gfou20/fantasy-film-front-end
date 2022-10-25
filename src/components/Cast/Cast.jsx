@@ -17,12 +17,12 @@ const Cast = ({movieId}) => {
   return (  
     <>
     {credits.length ?
-    credits.map( (cast,idx) => 
-      {if(idx < 5) return <li key={cast.name}>{cast.character} played by {cast.name}</li>} 
-    )
-      :
-      <li>No Cast</li>
-    }
+      credits.map( (cast,idx) => 
+        {if(idx < 6) return <li key={cast.name}>{cast.character} played by {cast.name}</li>} 
+      )
+        :
+        <li>No Cast</li>
+      }
     </>
   );
 }
