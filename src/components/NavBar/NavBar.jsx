@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
+import ProfileIcon from '../../assets/icons/profile.png'
 
 const NavBar = ({ user, handleLogout }) => {
+  const photo = user.profile.photo ? user.profile.photo : ProfileIcon
   return (
     <nav>
       {user ?
         <ul>
           <li>Welcome, {user.name}</li>
+          <img src={photo} alt="The user's avatar" />
           <li><Link to="/profiles">Profiles</Link></li>
           <li><Link to="/movie-search">Movie Search</Link></li>
           <li><Link to="/actor-search">Actor Search</Link></li>
