@@ -3,7 +3,8 @@ import Cast from '../Cast/Cast';
 import * as movieService from '../../services/movieService'
 import { Link } from "react-router-dom";
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({ movie, handleAddToFav }) => {
+  
   return (  
     <Link to={`/movies/${movie._id}`}>
     <div key={movie.id} className='card' style={{'width':'24rem'}}>
@@ -15,6 +16,12 @@ const MovieCard = ({movie}) => {
                   <ul>
                     <Cast key={movie.id} movieId={movie.id}/>
                   </ul>
+                  <button 
+            className='btn btn-primary mt-auto'
+            onClick={()=> handleAddToFav(movie)}
+          >
+            Create DreamCast
+          </button>
               </div>
             </div>
             </Link>
