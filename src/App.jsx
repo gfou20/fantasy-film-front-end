@@ -98,7 +98,7 @@ const App = () => {
           path="/movie-search"
           element={
             <ProtectedRoute user={user}>
-              <MovieSearch />
+              <MovieSearch profile={profile} setProfile={setProfile}/>
             </ProtectedRoute>
           }
         />
@@ -106,7 +106,7 @@ const App = () => {
           path="/movies/:id"
           element={
             <ProtectedRoute user={user}>
-              <MovieCard />
+              <MovieCard profile={profile} setProfile={setProfile}/>
             </ProtectedRoute>
           }
         />

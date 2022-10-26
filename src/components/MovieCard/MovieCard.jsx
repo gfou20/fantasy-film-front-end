@@ -4,9 +4,7 @@ import * as movieService from '../../services/movieService'
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, handleAddToFav }) => {
-  
   return (  
-    <Link to={`/movies/${movie._id}`}>
     <div key={movie.id} className='card' style={{'width':'24rem'}}>
               <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.original_title}/> 
               <div className='card-body'>
@@ -24,7 +22,6 @@ const MovieCard = ({ movie, handleAddToFav }) => {
           </button>
               </div>
             </div>
-            </Link>
   );
 }
 
